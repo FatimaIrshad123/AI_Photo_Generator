@@ -39,19 +39,12 @@ model Model {
   triggerWord    String?
   tensorPath     String?
   trainingStatus ModelTrainingStatusEnum @default(Pending)
-  trainigImages  TrainingImages[]
   outputImages   OutputImages[]
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   falAiRequestId String?
-   @@index([falAiRequestId])
-}
-
-model TrainingImages {
-  id        String  @id @default(uuid())
-  imageUrl  String
-  modelId   String
-  model     Model @relation(fields: [modelId], references: [id])
+  zipUrl         String
+  @@index([falAiRequestId])
 }
 
 enum OutputImageStatusEnum {
